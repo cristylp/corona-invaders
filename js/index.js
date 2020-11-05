@@ -24,8 +24,8 @@ const drawingApp = {
   totalScore: document.querySelector('.score span'),
   audios: {
     enemySound: new Audio('./audio/sneezing-1.mp3'),
-    gameOverSound: new Audio('./audio/explosion-01.mp3'), 
-    backgroundSound: new Audio('./audio/background-music.ogg')
+    gameOverSound: new Audio('./audio/explosion-01.mp3'),
+    winnerSound: new Audio('./audio/Fanfare-sound.mp3')
   },
   keys: {
     left: "ArrowLeft",
@@ -100,7 +100,7 @@ const drawingApp = {
 
     let [arrLimit] = this.people.sort((people1, people2) => people2.peoplePos.x - people1.peoplePos.x).slice(0, 1)
     let [arrStart] = this.people.sort((people1, people2) => people1.peoplePos.x - people2.peoplePos.x).slice(0, 1)
-  
+
     if (
       arrLimit.peoplePos.x + arrLimit.peopleSize.w >=
       this.canvasSize.w
@@ -150,7 +150,6 @@ const drawingApp = {
 
   drawAll() {
     this.interval = setInterval(() => {
-      this.audios.backgroundSound.play();
       this.clearScreen();
       this.drawRectangle();
       this.player.draw();
@@ -200,7 +199,8 @@ const drawingApp = {
   isWin() {
     if (this.people.length === 0) {
       clearInterval(this.interval);
-      this.drawWin()
+      this.drawWin();
+      this.audios.winnerSound.play();
     }
   },
 
@@ -225,7 +225,6 @@ const drawingApp = {
     }, 500);
     this.drawGameOver();
     this.audios.gameOverSound.play();
-    this.audios.backgroundSound.stop();
   },
 
   drawGameOver() {
@@ -239,6 +238,7 @@ const drawingApp = {
     this.ctx.font = 'bold 30px Verdana'
     this.ctx.fillText('GAME OVER!', this.canvasSize.w / 2, 120)
     this.ctx.fillText("Your score is: " + this.score, this.canvasSize.w / 2, 190)
+    this.totalScore.innerHTML = 0;
   }
 
 }

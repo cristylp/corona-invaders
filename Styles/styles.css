@@ -27,7 +27,7 @@ body button {
   /* border: 5px solid black; */
   color: #fff;
   padding: 20px 25px;
-  border: 0;
+  border: 3px solid black;
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -54,14 +54,24 @@ body button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 20px;
   border: 5px solid black;
   background: white;
 }
 
 .instructions p {
   font-size: 12px;
-  padding-bottom: 20px;
+}
+
+.first {
+  padding: 5px 10px 40px 10px;
+  margin: 0px;
+  line-height: 14px;
+}
+
+.second {
+  padding: 5px 10px 10px 10px;
+  margin: 0px;
+  line-height: 14px;
 }
 
 
@@ -71,17 +81,3 @@ body button {
   padding: 20px;
 }
 
-/* #score {
-    background-color: red;
-    font-size: 18px;
-    font-family: "Verdana"
-    color: #fff;
-    padding:10px 20px;
-    border: 0;
-    border-radius: 5px;
-    font-weight: bold;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    display: none;
-} */
