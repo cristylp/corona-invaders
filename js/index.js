@@ -48,6 +48,7 @@ const drawingApp = {
     this.drawAll();
     this.setEventListeners();
     this.isCollision();
+    this.score = 0;
   },
 
   setDimensions() {
